@@ -66,6 +66,9 @@ export class GameScene extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, LEVEL.LEVEL_WIDTH, GAME_HEIGHT);
         this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
 
+        // Set physics world bounds to match level width
+        this.physics.world.setBounds(0, 0, LEVEL.LEVEL_WIDTH, GAME_HEIGHT);
+
         // Setup input
         this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -232,8 +235,8 @@ export class GameScene extends Phaser.Scene {
     }
 
     hitPowerUpBox(player, box) {
-        // Only activate if hitting from below
-        if (player.body.velocity.y < 0 && player.y > box.y) {
+        // Only activate if hitting from below (player's head hits bottom of box)
+        if (player.body.touching.up && player.y > box.y) {
             const powerUp = box.hit();
             if (powerUp) {
                 this.activePowerUps.add(powerUp);
