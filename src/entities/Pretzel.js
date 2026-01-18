@@ -6,6 +6,7 @@ export class Pretzel extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(12); // Render above obstacles
         this.body.setAllowGravity(false);
         this.setSize(12, 12);
 

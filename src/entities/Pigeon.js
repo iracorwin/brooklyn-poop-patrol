@@ -8,6 +8,7 @@ export class Pigeon extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(15); // Render above ground obstacles
         this.body.setAllowGravity(false);
         this.setImmovable(true);
 
@@ -104,6 +105,7 @@ export class PigeonPoop extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(16); // Render above pigeon
         this.body.setGravityY(300);
         this.setSize(6, 6);
         this.setOffset(1, 1);

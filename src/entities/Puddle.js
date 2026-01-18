@@ -6,6 +6,7 @@ export class Puddle extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(width / 48, 1);
+        this.setDepth(5); // Render above backgrounds
         this.body.setAllowGravity(false);
         this.setImmovable(true);
         this.setSize(width - 8, 8);

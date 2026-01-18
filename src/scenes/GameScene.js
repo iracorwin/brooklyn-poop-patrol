@@ -30,21 +30,22 @@ export class GameScene extends Phaser.Scene {
         for (let x = 0; x < LEVEL.LEVEL_WIDTH + 64; x += 32) {
             const tile = this.ground.create(x, LEVEL.GROUND_Y + 25, 'ground');
             tile.setScale(1).refreshBody();
+            tile.setDepth(-10); // Behind all game entities
         }
 
         // Create player
         this.player = new Player(this, this.levelConfig.startX, LEVEL.GROUND_Y - 30);
         this.physics.add.collider(this.player, this.ground);
 
-        // Create entity groups
-        this.poops = this.physics.add.group();
-        this.puddles = this.physics.add.group();
+        // Create entity groups (disable gravity for static obstacles)
+        this.poops = this.physics.add.group({ allowGravity: false, immovable: true });
+        this.puddles = this.physics.add.group({ allowGravity: false, immovable: true });
         this.pigeons = [];
-        this.coins = this.physics.add.group();
-        this.pretzels = this.physics.add.group();
-        this.trashCans = this.physics.add.group();
+        this.coins = this.physics.add.group({ allowGravity: false });
+        this.pretzels = this.physics.add.group({ allowGravity: false });
+        this.trashCans = this.physics.add.group({ allowGravity: false, immovable: true });
         this.powerUpBoxes = [];
-        this.activePowerUps = this.physics.add.group();
+        this.activePowerUps = this.physics.add.group({ allowGravity: false });
 
         // Spawn entities
         this.spawnEntities();
@@ -133,6 +134,7 @@ export class GameScene extends Phaser.Scene {
         this.store = this.add.image(this.levelConfig.storeX, LEVEL.GROUND_Y - 48, 'store_mrcoco');
         this.store.setOrigin(0.5, 1);
         this.store.setScale(2);
+        this.store.setDepth(-5); // Behind game entities
 
         // Store text
         this.add.text(this.levelConfig.storeX, LEVEL.GROUND_Y - 180, this.levelConfig.storeName.toUpperCase(), {
@@ -141,16 +143,17 @@ export class GameScene extends Phaser.Scene {
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 3
-        }).setOrigin(0.5);
+        }).setOrigin(0.5).setDepth(25); // Above player
     }
 
     createHome() {
         this.home = this.add.image(50, LEVEL.GROUND_Y - 40, 'home');
         this.home.setOrigin(0.5, 1);
         this.home.setScale(2);
+        this.home.setDepth(-5); // Behind game entities
 
         // Home stoop
-        this.add.image(50, LEVEL.GROUND_Y, 'home_stoop').setOrigin(0.5, 1).setScale(2);
+        this.add.image(50, LEVEL.GROUND_Y, 'home_stoop').setOrigin(0.5, 1).setScale(2).setDepth(-5);
 
         // Home label
         this.add.text(50, LEVEL.GROUND_Y - 170, 'HOME', {
@@ -159,7 +162,7 @@ export class GameScene extends Phaser.Scene {
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 2
-        }).setOrigin(0.5);
+        }).setOrigin(0.5).setDepth(25); // Above player
     }
 
     setupCollisions() {
@@ -188,16 +191,22 @@ export class GameScene extends Phaser.Scene {
     }
 
     hitPoop(player, poop) {
-        if (gameState.phase === 2 && player.isScooping && !poop.scooped) {
-            // Scoop the poop
+        if (poop.scooped) return; // Already scooped, ignore
+
+        // Phase 2: Can scoop poop if pressing down
+        if (gameState.phase === 2 && player.isScooping) {
             if (gameState.scoopPoop()) {
                 poop.scoop();
                 audioManager.playScoop();
             }
-        } else if (gameState.phase === 1 && !poop.scooped) {
-            // Take damage
+            return;
+        }
+
+        // Both phases: Take damage if touching poop (and not immune)
+        if (!player.hasImmunity && !player.isHit && gameState.lives > 0) {
             if (player.hit()) {
-                if (!gameState.loseLife()) {
+                gameState.loseLife();
+                if (gameState.lives <= 0) {
                     this.gameOver();
                 }
             }

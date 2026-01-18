@@ -10,6 +10,7 @@ export class PowerUpBox extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(14); // Render above most obstacles
         this.body.setAllowGravity(false);
         this.setImmovable(true);
         this.setSize(16, 16);
@@ -83,6 +84,7 @@ class BasePowerUp extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(14); // Render above most obstacles
         this.body.setAllowGravity(false);
         this.setSize(14, 10);
 

@@ -8,6 +8,7 @@ export class TrashCan extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this);
 
         this.setScale(2);
+        this.setDepth(8); // Render above backgrounds
         this.setOrigin(0.5, 1);
         this.body.setAllowGravity(false);
         this.setImmovable(true);

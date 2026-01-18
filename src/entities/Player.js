@@ -36,6 +36,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Set scale for pixel art
         this.setScale(2);
+        this.setDepth(20); // Player renders above obstacles
     }
 
     createAnimations() {
