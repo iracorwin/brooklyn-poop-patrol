@@ -192,6 +192,7 @@ export class GameScene extends Phaser.Scene {
 
     hitPoop(player, poop) {
         if (poop.scooped) return; // Already scooped, ignore
+        if (!poop.body || !poop.body.enable) return; // Body disabled, ignore
 
         // Phase 2: Can scoop poop if pressing down
         if (gameState.phase === 2 && player.isScooping) {
@@ -206,6 +207,15 @@ export class GameScene extends Phaser.Scene {
         if (!player.hasImmunity && !player.isHit && gameState.lives > 0) {
             if (player.hit()) {
                 gameState.loseLife();
+
+                // Disable this poop's collision temporarily to prevent repeat hits
+                poop.body.enable = false;
+                this.time.delayedCall(1500, () => {
+                    if (poop && poop.body) {
+                        poop.body.enable = true;
+                    }
+                });
+
                 if (gameState.lives <= 0) {
                     this.gameOver();
                 }

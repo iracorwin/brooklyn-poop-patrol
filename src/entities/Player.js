@@ -165,7 +165,18 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         if (this.isHit || this.hasImmunity) return false;
 
         this.isHit = true;
+
+        // Teleport player backwards to escape the obstacle
+        const knockbackDistance = 50;
+        if (this.facingRight) {
+            this.x -= knockbackDistance;
+        } else {
+            this.x += knockbackDistance;
+        }
+
         this.setVelocityX(0);
+        this.setVelocityY(0);
+
         this.play('player_hit', true);
         audioManager.playDamage();
 
