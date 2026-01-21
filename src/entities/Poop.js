@@ -9,8 +9,8 @@ export class Poop extends Phaser.Physics.Arcade.Sprite {
         this.setDepth(10); // Ensure poops render above backgrounds
         this.body.setAllowGravity(false);
         this.setImmovable(true);
-        this.setSize(12, 12);
-        this.setOffset(2, 4);
+        this.setSize(12, 10);
+        this.setOffset(2, 6);
 
         this.scooped = false;
     }

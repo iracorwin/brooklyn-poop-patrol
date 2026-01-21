@@ -45,7 +45,7 @@ export class GameScene extends Phaser.Scene {
         this.pretzels = this.physics.add.group({ allowGravity: false });
         this.trashCans = this.physics.add.group({ allowGravity: false, immovable: true });
         this.powerUpBoxes = [];
-        this.activePowerUps = this.physics.add.group({ allowGravity: false });
+        this.activePowerUps = this.physics.add.group({ allowGravity: true });
 
         // Spawn entities
         this.spawnEntities();
@@ -188,6 +188,9 @@ export class GameScene extends Phaser.Scene {
 
         // Power-up collection
         this.physics.add.overlap(this.player, this.activePowerUps, this.collectPowerUp, null, this);
+
+        // Power-ups land on ground
+        this.physics.add.collider(this.activePowerUps, this.ground);
     }
 
     hitPoop(player, poop) {
@@ -242,8 +245,8 @@ export class GameScene extends Phaser.Scene {
     }
 
     hitTrashCan(player, trashCan) {
-        // Only tip if jumping on top
-        if (player.body.velocity.y > 0 && player.y < trashCan.y - 20) {
+        // Only tip if player landed on top (player's bottom touching trash can's top)
+        if (player.body.touching.down && player.y < trashCan.y - 20) {
             const newCoins = trashCan.tip();
             newCoins.forEach(coin => {
                 this.coins.add(coin);

@@ -85,29 +85,14 @@ class BasePowerUp extends Phaser.Physics.Arcade.Sprite {
 
         this.setScale(2);
         this.setDepth(14); // Render above most obstacles
-        this.body.setAllowGravity(false);
+        this.body.setAllowGravity(true);
         this.setSize(14, 10);
+        this.body.setBounce(0.2);
 
         this.collected = false;
 
-        // Pop up animation
-        scene.tweens.add({
-            targets: this,
-            y: y - 20,
-            duration: 300,
-            ease: 'Back.easeOut'
-        });
-
-        // Floating animation
-        scene.tweens.add({
-            targets: this,
-            y: y - 28,
-            duration: 600,
-            delay: 300,
-            yoyo: true,
-            repeat: -1,
-            ease: 'Sine.easeInOut'
-        });
+        // Pop up animation - gravity will handle the fall
+        this.body.setVelocityY(-200);
     }
 
     collect() {
