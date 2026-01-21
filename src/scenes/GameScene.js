@@ -33,8 +33,9 @@ export class GameScene extends Phaser.Scene {
             tile.setDepth(-10); // Behind all game entities
         }
 
-        // Create player
-        this.player = new Player(this, this.levelConfig.startX, LEVEL.GROUND_Y - 30);
+        // Create player (spawn at store if Phase 2, home if Phase 1)
+        const playerX = gameState.phase === 2 ? this.levelConfig.storeX : this.levelConfig.startX;
+        this.player = new Player(this, playerX, LEVEL.GROUND_Y - 30);
         this.physics.add.collider(this.player, this.ground);
 
         // Create entity groups (disable gravity for static obstacles)
