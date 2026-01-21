@@ -207,7 +207,12 @@ export class GameScene extends Phaser.Scene {
             return;
         }
 
-        // Both phases: Take damage if touching poop (and not immune)
+        // Phase 2 with bags: Poop is harmless, just don't damage the player
+        if (gameState.phase === 2 && gameState.bagsRemaining > 0) {
+            return;
+        }
+
+        // Phase 1 or Phase 2 without bags: Take damage if touching poop (and not immune)
         if (!player.hasImmunity && !player.isHit && gameState.lives > 0) {
             if (player.hit()) {
                 gameState.loseLife();
