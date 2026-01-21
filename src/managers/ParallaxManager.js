@@ -75,12 +75,13 @@ export class ParallaxManager {
         const container = this.scene.add.container(0, 0);
         container.setDepth(-80);
 
-        // Create silhouette buildings
+        // Create silhouette buildings with light, desaturated color for depth
         for (let x = 0; x < LEVEL.LEVEL_WIDTH + GAME_WIDTH; x += 80) {
             const height = 80 + Math.random() * 60;
-            const building = this.scene.add.image(x, LEVEL.GROUND_Y - height / 2 - 50, 'far_building');
+            const building = this.scene.add.image(x, LEVEL.GROUND_Y - height / 2 + 10, 'far_building');
             building.setScale(1, height / 120);
-            building.setTint(color);
+            // Use very light blue-gray to blend with sky and create depth
+            building.setTint(0xb0c8d8);
             container.add(building);
         }
 
@@ -92,10 +93,12 @@ export class ParallaxManager {
         const container = this.scene.add.container(0, 0);
         container.setDepth(-70);
 
-        // Create brownstone buildings
+        // Create brownstone buildings with lighter tint for depth
         for (let x = 0; x < LEVEL.LEVEL_WIDTH + GAME_WIDTH; x += 100) {
-            const brownstone = this.scene.add.image(x, LEVEL.GROUND_Y - 100, 'brownstone');
+            const brownstone = this.scene.add.image(x, LEVEL.GROUND_Y + 16, 'brownstone');
             brownstone.setOrigin(0.5, 1);
+            // Use light tan/beige to make them clearly background
+            brownstone.setTint(0x362514);
             container.add(brownstone);
         }
 
@@ -113,7 +116,7 @@ export class ParallaxManager {
 
             if (rand < 0.4) {
                 // Tree
-                const tree = this.scene.add.image(x, LEVEL.GROUND_Y - 64, 'tree');
+                const tree = this.scene.add.image(x, LEVEL.GROUND_Y, 'tree');
                 tree.setOrigin(0.5, 1);
                 container.add(tree);
             } else if (rand < 0.7) {

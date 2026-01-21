@@ -4,7 +4,7 @@ export const CLINTON_HILL = {
     number: 1,
     storeName: 'Mr. Coco',
     poopCount: 10,
-    bagCount: 10,
+    bagCount: 7,
 
     // Background layer colors for parallax
     background: {
