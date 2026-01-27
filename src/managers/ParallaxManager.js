@@ -97,8 +97,7 @@ export class ParallaxManager {
         for (let x = 0; x < LEVEL.LEVEL_WIDTH + GAME_WIDTH; x += 100) {
             const brownstone = this.scene.add.image(x, LEVEL.GROUND_Y + 16, 'brownstone');
             brownstone.setOrigin(0.5, 1);
-            // Use light tan/beige to make them clearly background
-            brownstone.setTint(0x362514);
+            // No tint needed - sprite is already gray
             container.add(brownstone);
         }
 

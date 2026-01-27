@@ -683,11 +683,11 @@ export class AssetGenerator {
 
         // Brownstone (80x100)
         this.createTexture('brownstone', 80, 100, (g) => {
-            g.fillStyle(COLORS.BROWNSTONE);
+            g.fillStyle(COLORS.BROWNSTONE_BG);
             g.fillRect(0, 0, 80, 100);
 
             // Lighter trim
-            g.fillStyle(COLORS.BROWNSTONE_LIGHT);
+            g.fillStyle(COLORS.BROWNSTONE_BG_LIGHT);
             g.fillRect(0, 0, 80, 8);
             g.fillRect(0, 0, 4, 100);
             g.fillRect(76, 0, 4, 100);
@@ -700,14 +700,14 @@ export class AssetGenerator {
             g.fillRect(50, 55, 20, 25);
 
             // Window frames
-            g.fillStyle(COLORS.BROWNSTONE_LIGHT);
+            g.fillStyle(COLORS.BROWNSTONE_BG_LIGHT);
             g.fillRect(10, 15, 20, 2);
             g.fillRect(50, 15, 20, 2);
             g.fillRect(10, 55, 20, 2);
             g.fillRect(50, 55, 20, 2);
 
             // Door
-            g.fillStyle(COLORS.BROWNSTONE_DARK);
+            g.fillStyle(COLORS.BROWNSTONE_BG_DARK);
             g.fillRect(32, 60, 16, 40);
         });
 

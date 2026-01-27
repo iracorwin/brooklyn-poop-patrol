@@ -101,7 +101,7 @@ export class GameScene extends Phaser.Scene {
 
         // Spawn puddles
         config.obstacles.puddles.forEach(puddle => {
-            const p = new Puddle(this, puddle.x, LEVEL.GROUND_Y - 8, puddle.width);
+            const p = new Puddle(this, puddle.x, LEVEL.GROUND_Y + 2, puddle.width);
             this.puddles.add(p);
         });
 
@@ -148,7 +148,7 @@ export class GameScene extends Phaser.Scene {
     }
 
     createHome() {
-        this.home = this.add.image(50, LEVEL.GROUND_Y - 40, 'home');
+        this.home = this.add.image(50, LEVEL.GROUND_Y, 'home');
         this.home.setOrigin(0.5, 1);
         this.home.setScale(2);
         this.home.setDepth(-5); // Behind game entities
@@ -157,7 +157,7 @@ export class GameScene extends Phaser.Scene {
         this.add.image(50, LEVEL.GROUND_Y, 'home_stoop').setOrigin(0.5, 1).setScale(2).setDepth(-5);
 
         // Home label
-        this.add.text(50, LEVEL.GROUND_Y - 170, 'HOME', {
+        this.add.text(50, LEVEL.GROUND_Y - 130, 'HOME', {
             fontFamily: 'monospace',
             fontSize: '14px',
             color: '#ffffff',
@@ -233,6 +233,7 @@ export class GameScene extends Phaser.Scene {
     }
 
     hitPuddle(player, puddle) {
+        if (player.hasImmunity) return;
         player.applySlow();
     }
 
@@ -300,7 +301,9 @@ export class GameScene extends Phaser.Scene {
                     this.player.getBounds(),
                     poop.getBounds()
                 )) {
-                    this.player.pauseForPigeon();
+                    if (!this.player.hasImmunity) {
+                        this.player.pauseForPigeon();
+                    }
                     poop.destroy();
                 }
             });
