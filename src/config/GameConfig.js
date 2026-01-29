@@ -9,7 +9,7 @@ export const PLAYER = {
     WIDTH: 16,
     HEIGHT: 24,
     SLOW_MULTIPLIER: 0.5,
-    SLOW_DURATION: 10000, // 10 seconds
+    SLOW_DURATION: 5000, // 5 seconds
     IMMUNITY_DURATION: 10000, // 10 seconds for pizza
     PIGEON_PAUSE_DURATION: 2000 // 2 seconds
 };
@@ -76,7 +76,7 @@ export const COLORS = {
     // Character colors
     SKIN: 0xf8b878,
     HAIR_BROWN: 0x503000,
-    HOODIE_PINK: 0xf878f8,
+    HOODIE_GRAY: 0xa8a8a8,
     HOODIE_PURPLE: 0x9878f8,
     JEANS: 0x0058f8,
 

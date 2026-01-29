@@ -73,7 +73,7 @@ export const CLINTON_HILL = {
         { x: 600, type: 'pizza' },
         { x: 1500, type: 'metrocard' },
         { x: 2000, type: 'hotdog' },
-        { x: 2600, type: 'omny' }
+        { x: 2600, type: 'omny', phase: 1 }
     ],
 
     // Level boundaries

@@ -126,13 +126,16 @@ export class GameScene extends Phaser.Scene {
 
         // Spawn power-up boxes
         config.powerUps.forEach(pu => {
-            const box = new PowerUpBox(this, pu.x, LEVEL.GROUND_Y - 80, pu.type);
-            this.powerUpBoxes.push(box);
+            // Only spawn if phase matches (if no phase specified, spawn in all phases)
+            if (!pu.phase || pu.phase === gameState.phase) {
+                const box = new PowerUpBox(this, pu.x, LEVEL.GROUND_Y - 80, pu.type);
+                this.powerUpBoxes.push(box);
+            }
         });
     }
 
     createStore() {
-        this.store = this.add.image(this.levelConfig.storeX, LEVEL.GROUND_Y - 48, 'store_mrcoco');
+        this.store = this.add.image(this.levelConfig.storeX, LEVEL.GROUND_Y, 'store_mrcoco');
         this.store.setOrigin(0.5, 1);
         this.store.setScale(2);
         this.store.setDepth(-5); // Behind game entities
@@ -352,7 +355,7 @@ export class GameScene extends Phaser.Scene {
         this.player.setVisible(false);
 
         // Create bus
-        this.bus = this.add.image(this.player.x - 100, LEVEL.GROUND_Y - 32, 'bus');
+        this.bus = this.add.image(this.player.x - 100, LEVEL.GROUND_Y, 'bus');
         this.bus.setOrigin(0.5, 1);
         this.bus.setScale(2);
         this.bus.setDepth(50);

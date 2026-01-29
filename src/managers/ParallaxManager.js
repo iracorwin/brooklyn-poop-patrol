@@ -125,9 +125,9 @@ export class ParallaxManager {
                 container.add(fence);
             } else {
                 // Stoop
-                const stoop = this.scene.add.image(x, LEVEL.GROUND_Y - 12, 'stoop');
-                stoop.setOrigin(0.5, 1);
-                container.add(stoop);
+                // const stoop = this.scene.add.image(x, LEVEL.GROUND_Y - 12, 'stoop');
+                // stoop.setOrigin(0.5, 1);
+                // container.add(stoop);
             }
         }
 

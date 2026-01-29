@@ -33,7 +33,7 @@ export class AssetGenerator {
             g.fillRect(9, 18, 3, 6);
 
             // Body (sparkly pink/purple hoodie)
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 10, 10, 8);
             // Sparkle details
             g.fillStyle(COLORS.HOODIE_PURPLE);
@@ -41,7 +41,7 @@ export class AssetGenerator {
             g.fillRect(9, 13, 2, 2);
 
             // Arms
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(1, 12, 2, 5);
             g.fillRect(13, 12, 2, 5);
 
@@ -78,14 +78,14 @@ export class AssetGenerator {
             g.fillRect(10, 18, 3, 5);
 
             // Body
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 10, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 11, 2, 2);
             g.fillRect(9, 13, 2, 2);
 
             // Arms swinging
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(0, 11, 3, 5);
             g.fillRect(13, 13, 3, 5);
 
@@ -120,14 +120,14 @@ export class AssetGenerator {
             g.fillRect(9, 18, 3, 6);
 
             // Body
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 10, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 11, 2, 2);
             g.fillRect(9, 13, 2, 2);
 
             // Arms swinging opposite
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(0, 13, 3, 5);
             g.fillRect(13, 11, 3, 5);
 
@@ -164,14 +164,14 @@ export class AssetGenerator {
             g.fillRect(10, 20, 3, 2);
 
             // Body
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 8, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 9, 2, 2);
             g.fillRect(9, 11, 2, 2);
 
             // Arms up
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(1, 6, 2, 6);
             g.fillRect(13, 6, 2, 6);
 
@@ -206,14 +206,14 @@ export class AssetGenerator {
             g.fillRect(9, 18, 4, 6);
 
             // Body bent forward
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(4, 12, 10, 6);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(6, 13, 2, 2);
             g.fillRect(10, 14, 2, 2);
 
             // Arms reaching down
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(12, 16, 4, 4);
 
             g.fillStyle(COLORS.SKIN);
@@ -243,11 +243,11 @@ export class AssetGenerator {
             g.fillRect(9, 18, 3, 6);
 
             // Body
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 10, 10, 8);
 
             // Arms flailing
-            g.fillStyle(COLORS.HOODIE_PINK);
+            g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(0, 8, 3, 5);
             g.fillRect(13, 8, 3, 5);
 
@@ -730,17 +730,17 @@ export class AssetGenerator {
         });
 
         // Stoop (32x24)
-        this.createTexture('stoop', 32, 24, (g) => {
-            g.fillStyle(COLORS.BROWNSTONE);
-            g.fillRect(0, 8, 32, 16);
-            g.fillRect(4, 0, 24, 8);
-            g.fillRect(8, 4, 16, 4);
+        // this.createTexture('stoop', 32, 24, (g) => {
+        //     g.fillStyle(COLORS.BROWNSTONE);
+        //     g.fillRect(0, 8, 32, 16);
+        //     g.fillRect(4, 0, 24, 8);
+        //     g.fillRect(8, 4, 16, 4);
 
-            // Steps
-            g.fillStyle(COLORS.BROWNSTONE_LIGHT);
-            g.fillRect(0, 8, 32, 2);
-            g.fillRect(4, 4, 24, 1);
-        });
+        //     // Steps
+        //     g.fillStyle(COLORS.BROWNSTONE_LIGHT);
+        //     g.fillRect(0, 8, 32, 2);
+        //     g.fillRect(4, 4, 24, 1);
+        // });
 
         // Fence (32x24)
         this.createTexture('fence', 32, 24, (g) => {
