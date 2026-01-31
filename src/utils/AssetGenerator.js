@@ -35,10 +35,15 @@ export class AssetGenerator {
             // Body (sparkly pink/purple hoodie)
             g.fillStyle(COLORS.HOODIE_GRAY);
             g.fillRect(3, 10, 10, 8);
-            // Sparkle details
+            // Sparkle details (multi-colored)
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 11, 2, 2);
+            g.fillStyle(COLORS.HOODIE_PINK);
             g.fillRect(9, 13, 2, 2);
+            g.fillStyle(COLORS.HOODIE_CYAN);
+            g.fillRect(4, 15, 2, 2);
+            g.fillStyle(COLORS.HOODIE_YELLOW);
+            g.fillRect(8, 16, 2, 2);
 
             // Arms
             g.fillStyle(COLORS.HOODIE_GRAY);
@@ -82,7 +87,12 @@ export class AssetGenerator {
             g.fillRect(3, 10, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 11, 2, 2);
+            g.fillStyle(COLORS.HOODIE_PINK);
             g.fillRect(9, 13, 2, 2);
+            g.fillStyle(COLORS.HOODIE_CYAN);
+            g.fillRect(4, 15, 2, 2);
+            g.fillStyle(COLORS.HOODIE_YELLOW);
+            g.fillRect(8, 16, 2, 2);
 
             // Arms swinging
             g.fillStyle(COLORS.HOODIE_GRAY);
@@ -124,7 +134,12 @@ export class AssetGenerator {
             g.fillRect(3, 10, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 11, 2, 2);
+            g.fillStyle(COLORS.HOODIE_PINK);
             g.fillRect(9, 13, 2, 2);
+            g.fillStyle(COLORS.HOODIE_CYAN);
+            g.fillRect(4, 15, 2, 2);
+            g.fillStyle(COLORS.HOODIE_YELLOW);
+            g.fillRect(8, 16, 2, 2);
 
             // Arms swinging opposite
             g.fillStyle(COLORS.HOODIE_GRAY);
@@ -168,7 +183,12 @@ export class AssetGenerator {
             g.fillRect(3, 8, 10, 8);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(5, 9, 2, 2);
+            g.fillStyle(COLORS.HOODIE_PINK);
             g.fillRect(9, 11, 2, 2);
+            g.fillStyle(COLORS.HOODIE_CYAN);
+            g.fillRect(4, 13, 2, 2);
+            g.fillStyle(COLORS.HOODIE_YELLOW);
+            g.fillRect(8, 14, 2, 2);
 
             // Arms up
             g.fillStyle(COLORS.HOODIE_GRAY);
@@ -210,7 +230,12 @@ export class AssetGenerator {
             g.fillRect(4, 12, 10, 6);
             g.fillStyle(COLORS.HOODIE_PURPLE);
             g.fillRect(6, 13, 2, 2);
+            g.fillStyle(COLORS.HOODIE_PINK);
             g.fillRect(10, 14, 2, 2);
+            g.fillStyle(COLORS.HOODIE_CYAN);
+            g.fillRect(5, 16, 2, 2);
+            g.fillStyle(COLORS.HOODIE_YELLOW);
+            g.fillRect(9, 16, 2, 2);
 
             // Arms reaching down
             g.fillStyle(COLORS.HOODIE_GRAY);

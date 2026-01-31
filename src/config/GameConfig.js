@@ -16,7 +16,7 @@ export const PLAYER = {
 
 // Level settings
 export const LEVEL = {
-    TIMER_DURATION: 120, // 120 seconds per level
+    TIMER_DURATION: 150, // 120 seconds per level
     LEVEL_WIDTH: 3200, // Level width in pixels
     GROUND_Y: 400 // Ground position
 };
@@ -78,6 +78,9 @@ export const COLORS = {
     HAIR_BROWN: 0x503000,
     HOODIE_GRAY: 0xa8a8a8,
     HOODIE_PURPLE: 0x9878f8,
+    HOODIE_PINK: 0xf878f8,
+    HOODIE_CYAN: 0x00e8d8,
+    HOODIE_YELLOW: 0xfcfc00,
     JEANS: 0x0058f8,
 
     // Object colors

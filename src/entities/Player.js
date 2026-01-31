@@ -143,7 +143,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // Scoop (Phase 2 only, down arrow)
-        if (cursors.down.isDown && onGround && gameState.phase === 2) {
+        if (cursors.down.isDown && !this.isJumping && gameState.phase === 2) {
             this.startScoop();
         }
     }

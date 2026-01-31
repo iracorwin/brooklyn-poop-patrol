@@ -9,6 +9,8 @@ export class HUD {
         this.timerText = null;
         this.bagsText = null;
         this.bagsIcon = null;
+        this.outOfBagsWarning = null;
+        this.outOfBagsShownTime = null;
     }
 
     create() {
@@ -46,6 +48,16 @@ export class HUD {
             strokeThickness: 3
         }).setScrollFactor(0).setDepth(100);
         this.bagsText.setVisible(false);
+
+        // Out of bags warning (center screen)
+        this.outOfBagsWarning = this.scene.add.text(GAME_WIDTH / 2, 120, 'OUT OF BAGS!', {
+            fontFamily: 'monospace',
+            fontSize: '32px',
+            color: '#ff0000',
+            stroke: '#000000',
+            strokeThickness: 5
+        }).setOrigin(0.5).setScrollFactor(0).setDepth(150);
+        this.outOfBagsWarning.setVisible(false);
     }
 
     createHearts() {
@@ -114,6 +126,36 @@ export class HUD {
 
         // Show bags only in Phase 2
         this.showBags(gameState.phase === 2);
+
+        // Show "OUT OF BAGS!" warning in Phase 2 when bags are 0
+        if (gameState.phase === 2 && gameState.bagsRemaining === 0) {
+            const now = Date.now();
+
+            // Track when warning was first shown
+            if (this.outOfBagsShownTime === null) {
+                this.outOfBagsShownTime = now;
+            }
+
+            const elapsed = (now - this.outOfBagsShownTime) / 1000; // seconds
+
+            if (elapsed < 5) {
+                // Flash for the first 5 seconds
+                this.outOfBagsWarning.setVisible(true);
+                this.outOfBagsWarning.setAlpha(Math.floor(now / 300) % 2 === 0 ? 1 : 0.5);
+            } else if (elapsed < 6) {
+                // Fade out over 1 second (from 5s to 6s)
+                this.outOfBagsWarning.setVisible(true);
+                const fadeProgress = elapsed - 5; // 0 to 1
+                this.outOfBagsWarning.setAlpha(1 - fadeProgress);
+            } else {
+                // Completely hidden after 6 seconds
+                this.outOfBagsWarning.setVisible(false);
+                this.outOfBagsWarning.setAlpha(0);
+            }
+        } else {
+            this.outOfBagsWarning.setVisible(false);
+            this.outOfBagsShownTime = null; // Reset timer when bags are replenished
+        }
     }
 
     destroy() {
@@ -122,5 +164,6 @@ export class HUD {
         this.scoreText.destroy();
         this.bagsText.destroy();
         this.bagsIcon.destroy();
+        this.outOfBagsWarning.destroy();
     }
 }

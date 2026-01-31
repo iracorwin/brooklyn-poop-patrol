@@ -120,7 +120,7 @@ export class ParallaxManager {
                 container.add(tree);
             } else if (rand < 0.7) {
                 // Fence section
-                const fence = this.scene.add.image(x, LEVEL.GROUND_Y - 12, 'fence');
+                const fence = this.scene.add.image(x, LEVEL.GROUND_Y, 'fence');
                 fence.setOrigin(0.5, 1);
                 container.add(fence);
             } else {
